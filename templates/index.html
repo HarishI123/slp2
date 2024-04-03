@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        form, audio {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text to Speech Conversion</h1>
+    <form action="/tts" method="post">
+        <textarea name="text" rows="5" cols="50" placeholder="Enter text here..." style="resize: none;"></textarea><br><br>
+        <input type="submit" value="Convert to Speech">
+    </form>
+
+    {% if audio_src %}
+        <audio controls autoplay>
+            <source src="{{ audio_src }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    {% endif %}
+</body>
+</html>
